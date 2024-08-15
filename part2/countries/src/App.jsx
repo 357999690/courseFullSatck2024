@@ -1,69 +1,20 @@
 import axios from "axios"
 import { useEffect, useState,  } from "react"
-
-const MoreTen = () => {
-  return (
-    <p>Too many matches, specify another filter</p>
-  )
-}
-
-const TenByOne = ( {countriesByOne, handleCountryClick} ) => {
-  return (
-    <div>
-      <li>{countriesByOne}</li>
-      <button onClick={handleCountryClick}>show</button>
-    </div>
-  )
-}
-
-const TenToOne = ( {countries, handleCountryClick} ) => {
-  return (
-    <>
-      <ul>
-        {countries.map((c,i) =>
-          <TenByOne key={i} countriesByOne={c.name.common} handleCountryClick={() => handleCountryClick(c.name.common)}/>)
-          }
-      </ul>
-    </>
-  )
-}
-
-const Languages = ( {languages} ) => {
-  return (
-    <div>
-      <li>{languages}</li>
-    </div>
-  )
-}
-
-const OneCountry = ( {country} ) => {
-  const languages = Object.values(country.languages)
-  const img = country.flags.png
-  return (
-    <div>
-      <h1>{country.name.common}</h1>
-      <p>capital {country.capital[0]}</p>
-      <p>area {country.area}</p>
-      <h2>lenguages:</h2>
-      <ul>
-        {languages.map((l,i) => 
-          <Languages key={i} languages={l}/>)}
-      </ul>
-      <img src={img}/>
-    </div>
-  )
-}
+import TenToOne from "./components/TenToOne"
+import MoreTen from "./components/MoreTen"
+import OneCountry from "./components/OneCountry"
+import countriesServices from './services/countries'
 
 const App = () => {
   const [countries, setCountries] = useState([])
   const [searchCountries, setSearchCountries] = useState('')
 
   useEffect(() => {
-    axios
-      .get('https://studies.cs.helsinki.fi/restcountries/api/all')
-      .then(response => {
-        console.log(response.data)
-        setCountries(response.data)
+    countriesServices
+      .getAll()
+      .then(countries => {
+        
+        setCountries(countries)
       })
   }, [])
 
@@ -96,9 +47,6 @@ const App = () => {
       )
       
     }
-    // return (
-    //   <MoreTen/>
-    // )
   }
 
   return (
@@ -110,14 +58,7 @@ const App = () => {
       </div>
       <div>
         {renderCountries()}
-        {/* {filter.length > 10 ?
-          <MoreTen/> :
-          null} */}
       </div>
-        
-        
-      
-      
     </>
   )
 }
