@@ -1,4 +1,4 @@
-import axios from "axios"
+
 import { useEffect, useState,  } from "react"
 import TenToOne from "./components/TenToOne"
 import MoreTen from "./components/MoreTen"
