@@ -16,9 +16,7 @@ const initalBlogs = [
     },
 ]
 
-// const nonExistingId = async () => {
-//     const blog = new Blog
-// }
+
 
 const blogsInDb = async () => {
     const blogs = await Blog.find({})

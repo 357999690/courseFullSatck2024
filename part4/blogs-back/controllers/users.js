@@ -12,10 +12,7 @@ usersRouter.post('/', async (request, response, next) => {
     
     const { username, name, password } = request.body
 
-    // if(password.length < 3) {
-    //     return next(error)
-    // }
-
+    
     const saltRounds = 10
     const passwordHash = await bcrypt.hash(password, saltRounds)
 
@@ -36,17 +33,7 @@ usersRouter.post('/', async (request, response, next) => {
         
         
 
-    // if (password.length >= 3) {
-    //     try {
-    //         const savedUser = await user.save()
-
-    // response.status(201).json(savedUser)
-    //     } catch (execption ) {
-    //         next(execption)
-    //     }
     
-    // }
-
     
 } )
 

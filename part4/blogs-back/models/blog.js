@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-// const commentsSchema = new mongoose.Schema(String)
+
 
 const blogSchema = new mongoose.Schema({
     title: {
@@ -21,12 +21,7 @@ const blogSchema = new mongoose.Schema({
         type: Array,
         default: []
       }
-    // comments: [
-    //     {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: 'Comment'
-    //     }
-    //   ]
+    
     
 })
 

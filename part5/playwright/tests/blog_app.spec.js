@@ -104,30 +104,7 @@ describe('Blog app', () => {
                 await page.getByTestId('author').fill('hola')
                 await page.getByTestId('url').fill('hola')
                 await page.getByRole('button', { name: 'create' }).click()
-                // await request.post('http://localhost:3003/api/blogs', {
-                //     data: {
-                //         title: '111111',
-                //         author: '111111',
-                //         url: '111111',
-                //         likes: 23
-                //     }
-                // })
-                // await request.post('http://localhost:3003/api/blogs', {
-                //     data: {
-                //         title: '22222',
-                //         author: '222',
-                //         url: '222',
-                //         likes: 17
-                //     }
-                // })
-
-                // await page.goto('http://localhost:5174')
-
-                // const buttonsView = await page.getByRole('button').all()
-                // console.log(buttonsView)
-                // await page.buttonsView[2].click()
-
-                // await expect(page.getByText(23)).toBeVisible()
+                
 
             })
         })
